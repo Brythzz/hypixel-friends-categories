@@ -1,15 +1,15 @@
-package dev.bryth.commands;
+package dev.bryth.friendscategories.commands;
 
-import dev.bryth.managers.FriendsCategoriesManager;
+import dev.bryth.friendscategories.managers.FriendsCategoriesManager;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
 import java.util.Arrays;
 import java.util.List;
 
-import dev.bryth.commands.subcommands.*;
+import dev.bryth.friendscategories.commands.subcommands.*;
 
-import dev.bryth.utils.MessageUtil;
+import dev.bryth.friendscategories.utils.MessageUtil;
 import net.minecraft.util.ChatComponentText;
 
 public class FriendCategory extends CommandBase {

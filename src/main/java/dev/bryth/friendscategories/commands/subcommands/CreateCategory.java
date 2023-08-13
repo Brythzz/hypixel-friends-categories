@@ -1,8 +1,8 @@
-package dev.bryth.commands.subcommands;
+package dev.bryth.friendscategories.commands.subcommands;
 
-import dev.bryth.managers.FriendsCategoriesManager;
-import dev.bryth.utils.MessageUtil;
-import dev.bryth.utils.NumUtil;
+import dev.bryth.friendscategories.managers.FriendsCategoriesManager;
+import dev.bryth.friendscategories.utils.MessageUtil;
+import dev.bryth.friendscategories.utils.NumUtil;
 
 public class CreateCategory {
     public String getCommandUsage() {

@@ -1,4 +1,4 @@
-package dev.bryth.utils;
+package dev.bryth.friendscategories.utils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.event.ClickEvent;

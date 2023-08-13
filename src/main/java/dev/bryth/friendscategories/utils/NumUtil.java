@@ -1,4 +1,4 @@
-package dev.bryth.utils;
+package dev.bryth.friendscategories.utils;
 
 public class NumUtil {
     public static boolean isPositiveInteger(String num) {

@@ -1,8 +1,8 @@
-package dev.bryth.managers;
+package dev.bryth.friendscategories.managers;
 
 import com.google.gson.Gson;
-import dev.bryth.utils.ListUtil;
-import dev.bryth.utils.MessageUtil;
+import dev.bryth.friendscategories.utils.ListUtil;
+import dev.bryth.friendscategories.utils.MessageUtil;
 
 import java.io.File;
 import java.io.FileReader;

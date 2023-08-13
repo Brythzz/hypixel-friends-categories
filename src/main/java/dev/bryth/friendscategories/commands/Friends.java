@@ -1,8 +1,8 @@
-package dev.bryth.commands;
+package dev.bryth.friendscategories.commands;
 
-import dev.bryth.managers.FriendsCategoriesManager;
-import dev.bryth.managers.FriendsListManager;
-import dev.bryth.utils.NumUtil;
+import dev.bryth.friendscategories.managers.FriendsCategoriesManager;
+import dev.bryth.friendscategories.managers.FriendsListManager;
+import dev.bryth.friendscategories.utils.NumUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -10,7 +10,7 @@ import net.minecraft.command.ICommandSender;
 import java.util.Arrays;
 import java.util.List;
 
-import dev.bryth.utils.MessageUtil;
+import dev.bryth.friendscategories.utils.MessageUtil;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Friends extends CommandBase {

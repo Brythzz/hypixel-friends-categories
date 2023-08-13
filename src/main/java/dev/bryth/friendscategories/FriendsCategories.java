@@ -1,6 +1,6 @@
-package dev.bryth;
+package dev.bryth.friendscategories;
 
-import dev.bryth.managers.FriendsCategoriesManager;
+import dev.bryth.friendscategories.managers.FriendsCategoriesManager;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -8,9 +8,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.io.File;
 
-import dev.bryth.commands.FriendCategory;
-import dev.bryth.commands.FriendsList;
-import dev.bryth.commands.Friends;
+import dev.bryth.friendscategories.commands.FriendCategory;
+import dev.bryth.friendscategories.commands.FriendsList;
+import dev.bryth.friendscategories.commands.Friends;
 
 @Mod(modid = "friends-categories", useMetadata=true)
 public class FriendsCategories {

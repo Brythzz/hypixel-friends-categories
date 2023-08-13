@@ -1,7 +1,7 @@
-package dev.bryth.managers;
+package dev.bryth.friendscategories.managers;
 
-import dev.bryth.utils.ListUtil;
-import dev.bryth.utils.MessageUtil;
+import dev.bryth.friendscategories.utils.ListUtil;
+import dev.bryth.friendscategories.utils.MessageUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;

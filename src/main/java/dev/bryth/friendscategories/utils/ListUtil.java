@@ -1,4 +1,4 @@
-package dev.bryth.utils;
+package dev.bryth.friendscategories.utils;
 
 import java.util.List;
 

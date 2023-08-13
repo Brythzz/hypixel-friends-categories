@@ -1,7 +1,7 @@
-package dev.bryth.commands.subcommands;
+package dev.bryth.friendscategories.commands.subcommands;
 
-import dev.bryth.managers.FriendsCategoriesManager;
-import dev.bryth.utils.MessageUtil;
+import dev.bryth.friendscategories.managers.FriendsCategoriesManager;
+import dev.bryth.friendscategories.utils.MessageUtil;
 
 public class AddFriend {
     public String getCommandUsage() {
