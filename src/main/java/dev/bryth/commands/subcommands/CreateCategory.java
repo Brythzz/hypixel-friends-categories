@@ -27,7 +27,7 @@ public class CreateCategory {
             return;
         }
 
-        if (name.equalsIgnoreCase("best") || name.equalsIgnoreCase("all")) {
+        if (name.equalsIgnoreCase("best")) {
             MessageUtil.sendError("You cannot create a category with the name " + name);
             return;
         }

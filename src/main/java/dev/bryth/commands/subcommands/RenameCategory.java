@@ -22,7 +22,7 @@ public class RenameCategory {
             return;
         }
 
-        if (name.equalsIgnoreCase("best") || name.equalsIgnoreCase("all")) {
+        if (name.equalsIgnoreCase("best")) {
             MessageUtil.sendError("You cannot rename a category to " + name);
             return;
         }
