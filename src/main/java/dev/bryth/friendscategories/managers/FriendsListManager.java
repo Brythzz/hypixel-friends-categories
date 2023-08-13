@@ -13,6 +13,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FriendsListManager {
 
@@ -20,6 +22,8 @@ public class FriendsListManager {
     private List<String> friends;
     private int categorySize;
     private int friendsAdded = 0;
+    private int lastPage = 0;
+    private boolean alreadyRetried = false;
     private final ChatComponentText out = new ChatComponentText(MessageUtil.getSeparator());
 
     public void sendFilteredFriends(String category) {
@@ -77,6 +81,22 @@ public class FriendsListManager {
         String message = event.message.getFormattedText();
         String sep = MessageUtil.getSeparator();
 
+        if (message.contains("You are sending commands too fast!")) {
+            if (alreadyRetried) {
+                MessageUtil.sendError("You are sending commands too fast!");
+                terminate();
+                return;
+            }
+            alreadyRetried = true;
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Minecraft.getMinecraft().thePlayer.sendChatMessage("/fl " + (lastPage + 1));
+                }
+            }, 1000);
+            return;
+        }
+
         if (!message.startsWith(sep) || !message.endsWith(sep)) return;
 
         List<IChatComponent> components = event.message.getSiblings();
@@ -100,6 +120,8 @@ public class FriendsListManager {
 
         int curPage = Integer.parseInt(digits[1]);
         int maxPage = Integer.parseInt(digits[2]);
+
+        lastPage = curPage;
 
         for (int i = 0; i < componentsCount; i++) {
             IChatComponent component = components.get(i);
