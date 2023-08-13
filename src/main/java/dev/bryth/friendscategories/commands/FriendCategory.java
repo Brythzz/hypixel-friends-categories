@@ -42,7 +42,7 @@ public class FriendCategory extends CommandBase {
 
         ChatComponentText message = new ChatComponentText(MessageUtil.getSeparator() + "§6Categories\n");
         for (String category : categories) {
-            ChatComponentText button = MessageUtil.getButton(category, "See friends in the category " + category, "/f list " + category);
+            ChatComponentText button = MessageUtil.getButton(category, "§eSee friends in the category " + category, "/f list " + category);
             message.appendSibling(button);
         }
         message.appendSibling(new ChatComponentText("\n" + MessageUtil.getSeparator()));
