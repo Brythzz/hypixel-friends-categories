@@ -71,9 +71,9 @@ public class FriendsCategoriesManager {
     }
 
     public static void createCategory(String name) {
-        List<String> categoryList = fc.categories.get(name);
-        if (categoryList != null) {
-            MessageUtil.sendError(String.format("A category with the name %s already exists", name));
+        String categoryName = ListUtil.getKeyCaseInsensitive(getCategories(), name);
+        if (categoryName != null) {
+            MessageUtil.sendError(String.format("A category with the name %s already exists", categoryName));
             return;
         }
 
