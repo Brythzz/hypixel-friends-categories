@@ -20,9 +20,9 @@ The mod requires [Forge 1.8.9](https://files.minecraftforge.net/net/minecraftfor
 You can download the mod files from the [Releases Tab](https://github.com/Brythzz/hypixel-friends-categories/releases/latest)
 
 ## Screenshots
-![Example category list](https://github.com/Brythzz/hypixel-friends-categories/assets/62302815/a6781f8a-bca3-4065-9e0b-b6e8f61ee162)
+![Example category list](https://github.com/Brythzz/hypixel-friends-categories/assets/62302815/eaf46777-0804-4b78-b4fb-6e6f57284d67)
 
-![Example category](https://github.com/Brythzz/hypixel-friends-categories/assets/62302815/37933041-f67c-4510-b3c2-109658d23aa0)
+![Example category](https://github.com/Brythzz/hypixel-friends-categories/assets/62302815/9db66056-b724-470d-b354-699c2a86cb02)
 
 ## Demo video
 [![Youtube video demo](https://img.youtube.com/vi/5JFiom0_DJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=5JFiom0_DJg)
