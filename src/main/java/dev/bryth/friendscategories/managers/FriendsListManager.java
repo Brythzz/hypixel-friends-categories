@@ -32,6 +32,11 @@ public class FriendsListManager {
         FriendsCategoriesManager.lock = true;
 
         List<String> friendsList = FriendsCategoriesManager.getFriends(categoryName);
+        if (friendsList == null || friendsList.isEmpty()) {
+            MessageUtil.sendError(String.format("Category %s§c is empty!", categoryName));
+            return;
+        }
+
         out.appendSibling(new ChatComponentText("\n§e" + MessageUtil.padMessage(categoryName) + "\n"));
 
         friends = new ArrayList<>(friendsList);
