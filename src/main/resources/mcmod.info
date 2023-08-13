@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "${modid}",
+    "name": "FriendsCategory",
+    "description": "Hypixel friends list category mod",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "http://bryth.dev",
+    "updateUrl": "",
+    "authorList": [
+      "Bryth"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
