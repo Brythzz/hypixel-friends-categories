@@ -73,12 +73,12 @@ public class FriendsCategoriesManager {
     public static void createCategory(String name) {
         String categoryName = ListUtil.getKeyCaseInsensitive(getCategories(), name);
         if (categoryName != null) {
-            MessageUtil.sendError(String.format("A category with the name %s already exists", categoryName));
+            MessageUtil.sendError(String.format("A category with the name %s§c already exists", categoryName));
             return;
         }
 
         fc.categories.put(name, new ArrayList<>());
-        MessageUtil.sendMessage(String.format("§aCreated the category %s", name));
+        MessageUtil.sendMessage(String.format("§aCreated the category §e%s", name));
         save();
     }
 
@@ -90,7 +90,7 @@ public class FriendsCategoriesManager {
         }
 
         fc.categories.remove(categoryName);
-        MessageUtil.sendMessage(String.format("§aDeleted the category %s", categoryName));
+        MessageUtil.sendMessage(String.format("§aDeleted the category §e%s", categoryName));
         save();
     }
 

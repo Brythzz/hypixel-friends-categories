@@ -17,7 +17,7 @@ public class MessageUtil {
     public static String padMessage(String content) {
         int spaces = 38 - (removeFormatting(content).length() / 2);
         String spacing = new String(new char[spaces]).replace('\0', ' ');
-        return "§r" + spacing + content;
+        return spacing + content;
     }
 
     public static void sendError(String content) {
