@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import java.io.File;
 
 import dev.bryth.commands.FriendCategory;
+import dev.bryth.commands.FriendsList;
 import dev.bryth.commands.Friends;
 
 @Mod(modid = "friends-categories", useMetadata=true)
@@ -22,6 +23,7 @@ public class FriendsCategories {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         ClientCommandHandler.instance.registerCommand(new FriendCategory());
+        ClientCommandHandler.instance.registerCommand(new FriendsList());
         ClientCommandHandler.instance.registerCommand(new Friends());
     }
 }

@@ -11,10 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import dev.bryth.utils.MessageUtil;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.MinecraftForge;
 
-// Note: we do not override the /fl command
 public class Friends extends CommandBase {
     @Override
     public String getCommandName() {
@@ -41,36 +39,9 @@ public class Friends extends CommandBase {
         Minecraft.getMinecraft().thePlayer.sendChatMessage(command);
     }
 
-    @Override // We only override the f list command
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
         if (args.length == 0 || !args[0].equalsIgnoreCase("list")) {
-            sendCommand(args);
-            return;
-        }
-
-        if (args.length == 1) {
-            List<String> categories =  FriendsCategoriesManager.getCategories();
-            if (categories.isEmpty()) {
-                MessageUtil.sendMessage(MessageUtil.getSeparator() + "\n§cYou have no categories! Create one with /fc create <name>\n" + MessageUtil.getSeparator());
-                return;
-            }
-
-            ChatComponentText message = new ChatComponentText(MessageUtil.getSeparator() + "§6Categories\n");
-            for (String category : categories) {
-                ChatComponentText button = MessageUtil.getButton(category, "See friends in the category " + category, "/f list " + category);
-                message.appendSibling(button);
-            }
-            message.appendSibling(new ChatComponentText("\n" + MessageUtil.getSeparator()));
-            MessageUtil.sendRichMessage(message);
-            return;
-        }
-
-        if (args[1].equalsIgnoreCase("all")) {
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/f list");
-            return;
-        }
-
-        if (args[1].equalsIgnoreCase("best") || NumUtil.isPositiveInteger(args[1])) {
             sendCommand(args);
             return;
         }
@@ -80,7 +51,11 @@ public class Friends extends CommandBase {
             return;
         }
 
-        FriendsCategoriesManager.lock = true;
+        if (args.length == 1 || args[1].equalsIgnoreCase("best") || NumUtil.isPositiveInteger(args[1])) {
+            sendCommand(args);
+            return;
+        }
+
         FriendsListManager friendsListManager = new FriendsListManager();
         MinecraftForge.EVENT_BUS.register(friendsListManager);
         friendsListManager.sendFilteredFriends(args[1]);

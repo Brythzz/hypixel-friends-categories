@@ -11,7 +11,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FriendsListManager {
 
@@ -27,6 +28,8 @@ public class FriendsListManager {
             MessageUtil.sendError(String.format("Category %s§c does not exist!", category));
             return;
         }
+
+        FriendsCategoriesManager.lock = true;
 
         List<String> friendsList = FriendsCategoriesManager.getFriends(categoryName);
         out.appendSibling(new ChatComponentText("\n§e" + MessageUtil.padMessage(categoryName) + "\n"));
@@ -49,8 +52,10 @@ public class FriendsListManager {
     @SubscribeEvent
     public void onEntityJoinWorld(EntityJoinWorldEvent event) {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-        if (event.entity == player)
+        if (event.entity == player) {
             MinecraftForge.EVENT_BUS.unregister(this);
+            FriendsCategoriesManager.lock = false;
+        }
     }
 
     @SubscribeEvent(receiveCanceled = true)

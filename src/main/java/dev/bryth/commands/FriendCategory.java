@@ -10,6 +10,7 @@ import java.util.List;
 import dev.bryth.commands.subcommands.*;
 
 import dev.bryth.utils.MessageUtil;
+import net.minecraft.util.ChatComponentText;
 
 public class FriendCategory extends CommandBase {
     @Override
@@ -33,11 +34,19 @@ public class FriendCategory extends CommandBase {
     }
 
     private void sendCategories() {
-        List<String> categories = FriendsCategoriesManager.getCategories();
-        if (categories.isEmpty())
-            MessageUtil.sendError("You have no categories! Create one with /fc create <name>");
-        else
-            MessageUtil.sendMessage("§eCategories: " + String.join("§r, ", FriendsCategoriesManager.getCategories()));
+        List<String> categories =  FriendsCategoriesManager.getCategories();
+        if (categories.isEmpty()) {
+            MessageUtil.sendMessage(MessageUtil.getSeparator() + "\n§cYou have no categories! Create one with /fc create <name>\n" + MessageUtil.getSeparator());
+            return;
+        }
+
+        ChatComponentText message = new ChatComponentText(MessageUtil.getSeparator() + "§6Categories\n");
+        for (String category : categories) {
+            ChatComponentText button = MessageUtil.getButton(category, "See friends in the category " + category, "/f list " + category);
+            message.appendSibling(button);
+        }
+        message.appendSibling(new ChatComponentText("\n" + MessageUtil.getSeparator()));
+        MessageUtil.sendRichMessage(message);
     }
 
     @Override
