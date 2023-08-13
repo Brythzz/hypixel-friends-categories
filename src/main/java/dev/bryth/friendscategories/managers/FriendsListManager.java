@@ -29,13 +29,13 @@ public class FriendsListManager {
             return;
         }
 
-        FriendsCategoriesManager.lock = true;
-
         List<String> friendsList = FriendsCategoriesManager.getFriends(categoryName);
         if (friendsList == null || friendsList.isEmpty()) {
             MessageUtil.sendError(String.format("Category %s§c is empty!", categoryName));
             return;
         }
+
+        FriendsCategoriesManager.lock = true;
 
         out.appendSibling(new ChatComponentText("\n§e" + MessageUtil.padMessage(categoryName) + "\n"));
 
@@ -54,6 +54,12 @@ public class FriendsListManager {
         MessageUtil.sendRichMessage(out);
     }
 
+    private void terminate() {
+        catchingFriends = false;
+        MinecraftForge.EVENT_BUS.unregister(this);
+        FriendsCategoriesManager.lock = false;
+    }
+
     @SubscribeEvent
     public void onEntityJoinWorld(EntityJoinWorldEvent event) {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
@@ -69,20 +75,31 @@ public class FriendsListManager {
         if (!catchingFriends || !isChatMessage) return;
 
         String message = event.message.getFormattedText();
-
         String sep = MessageUtil.getSeparator();
 
         if (!message.startsWith(sep) || !message.endsWith(sep)) return;
 
-        event.setCanceled(true);
+        List<IChatComponent> components = event.message.getSiblings();
+        int componentsCount = components.size();
+
+        boolean hasNoFriends = componentsCount == 4;
+        if (hasNoFriends) {
+            event.setCanceled(true);
+            sendMessage();
+            terminate();
+            return;
+        }
 
         String[] lines = message.split("\n");
         String[] digits = MessageUtil.removeFormatting(lines[1]).split("\\D+");
+
+        boolean isFriendsList = digits.length == 3;
+        if (!isFriendsList) return;
+
+        event.setCanceled(true);
+
         int curPage = Integer.parseInt(digits[1]);
         int maxPage = Integer.parseInt(digits[2]);
-
-        List<IChatComponent> components = event.message.getSiblings();
-        int componentsCount = components.size();
 
         for (int i = 0; i < componentsCount; i++) {
             IChatComponent component = components.get(i);
@@ -103,9 +120,7 @@ public class FriendsListManager {
         }
 
         if (friendsAdded == categorySize || curPage >= maxPage) {
-            MinecraftForge.EVENT_BUS.unregister(this);
-            catchingFriends = false;
-            FriendsCategoriesManager.lock = false;
+            terminate();
             sendMessage();
             return;
         }
