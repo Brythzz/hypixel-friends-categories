@@ -25,4 +25,4 @@ You can download the mod files from the [Releases Tab](https://github.com/Brythz
 ![Example category](https://github.com/Brythzz/hypixel-friends-categories/assets/62302815/37933041-f67c-4510-b3c2-109658d23aa0)
 
 ## Demo video
-[![Youtube video demo](https://img.youtube.com/vi/5JFiom0_DJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=Y5JFiom0_DJg)
+[![Youtube video demo](https://img.youtube.com/vi/5JFiom0_DJg/maxresdefault.jpg)](https://www.youtube.com/watch?v=5JFiom0_DJg)
